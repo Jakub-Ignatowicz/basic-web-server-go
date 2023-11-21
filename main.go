@@ -1,9 +1,10 @@
 package main
 
 import (
-	"fmt"
+	"net/http"
 )
 
 func main() {
-	fmt.Printf("Hello")
+	fileServer := http.FileServer(http.Dir("./static"))
+	http.Handle("/", fileServer)
 }
